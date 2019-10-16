@@ -25,6 +25,10 @@ require('kube-probe')(app);
 // Include sensible security headers by default
 app.use(require('helmet')());
 
+// Apply CORS headers. Note this is insecure since it returns a *
+// It's recommend you pass the hostnames you wish to allow use CORS
+app.use(require('cors')());
+
 // Log incoming requests
 app.use(require('morgan')('combined'));
 
