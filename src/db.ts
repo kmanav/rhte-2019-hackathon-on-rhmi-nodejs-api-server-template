@@ -5,7 +5,7 @@ import log from './log';
 const connectionString = env
   .get(
     'PG_CONNECTION_STRING',
-    'postgresql://evals01:Password1@localhost:5432/city-info'
+    'postgresql://evals03:Password1@localhost:5432/city-info'
   )
   .asUrlString();
 
