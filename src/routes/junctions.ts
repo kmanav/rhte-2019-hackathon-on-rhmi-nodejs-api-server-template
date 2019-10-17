@@ -3,10 +3,19 @@ import { query } from '../db';
 
 const junctionsRoute = express.Router();
 
-junctionsRoute.get('/', async (req, res) => {
-  const ret = await query('select * from junction_info;');
+type JunctionObject = {
+  junction_id: number,
+  count_ns: number,
+  count_ew: number,
+  last_updated: string,
+  longitude: number,
+  latitude: number
+};
 
-  res.json(ret.rows);
-});
+junctionsRoute.get('/', async (req, res) => {
+  const result = await query<JunctionObject>('SELECT * FROM junction_info;')
+
+  res.json(result.rows)
+})
 
 export default junctionsRoute;
